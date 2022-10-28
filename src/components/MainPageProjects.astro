@@ -1,0 +1,28 @@
+---
+import MainPageProject from './MainPageProject.astro';
+
+import { projects } from '../constants/MainPage';
+---
+
+<section id="projects">
+  {
+    projects.map((project) => (
+      <MainPageProject
+        href={project.href}
+        img={project.img}
+        description={project.description}
+        website={project.website}
+        code={project.code}
+      />
+    ))
+  }
+</section>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+   
+    row-gap: 35px;
+  }
+</style>

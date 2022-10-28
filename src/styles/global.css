@@ -1,0 +1,32 @@
+html {
+  scroll-behavior: smooth;
+
+  --black: #111111;
+  --white: #ffffff;
+}
+
+body {
+  font-family: 'Inter';
+  font-weight: normal;
+  font-style: normal;
+  color: var(--white);
+
+  background-color: var(--black);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input[type='submit'],
+input[type='reset'] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}

@@ -1,0 +1,43 @@
+---
+const items = [
+  {
+    name: 'Main',
+    href: '/#intro'
+  },
+  {
+    name: 'Projects',
+    href: '/#projects'
+  },
+  {
+    name: 'Contacts',
+    href: '#footer'
+  }
+];
+---
+
+<header id="header">
+  <nav>
+    {items.map((item) => <a href={item.href}>{item.name}</a>)}
+  </nav>
+</header>
+
+<style>
+  nav {
+    height: 120px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 60px;
+
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  @media (min-width: 640px) {
+    nav {
+      justify-content: flex-end;
+    }
+  }
+</style>

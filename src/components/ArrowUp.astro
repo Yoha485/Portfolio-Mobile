@@ -1,0 +1,31 @@
+<svg width="50" height="50" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient-example" x1="0" x2="0" y1="62" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="13%" stop-color="white"></stop>
+      <stop offset="100%" stop-color="white"></stop>
+    </linearGradient>
+  </defs>
+
+  <path
+    d="M1 32.5C1 15.069 15.069 1 32.5 1C49.931 1 64 15.069 64 32.5C64 49.931 49.931 64 32.5 64C15.069 64 1 49.931 1 32.5Z"
+    stroke="white"
+    stroke-width="2"></path>
+  <path d="M33 16L33 52M33 16L45 26.1714M33 16L21 26.1714" stroke="white" stroke-width="2"></path>
+</svg>
+
+<style>
+  path {
+    cursor: pointer;
+    stroke: url('#gradient-example');
+  }
+  stop {
+    transition: 0.8s;
+  }
+
+  svg:hover stop:first-child {
+    stop-color: #06fdd8;
+  }
+  svg:hover stop:last-child {
+    stop-color: #0e9aff;
+  }
+</style>

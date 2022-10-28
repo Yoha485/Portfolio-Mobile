@@ -1,0 +1,21 @@
+---
+import MainPageTitle from '../components/MainPageIntro.astro';
+import Marginer from '../components/Marginer.astro';
+import MainPageProjects from '../components/MainPageProjects.astro';
+import MainPageSkills from '../components/MainPageSkills.astro';
+import MainPageSendMessage from '../components/MainPageSendMessage.astro';
+
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <Marginer margin="50px" />
+  <MainPageTitle />
+  <Marginer margin="110px" />
+  <MainPageSkills />
+  <Marginer margin="100px" />
+  <MainPageProjects />
+  <Marginer margin="96px" />
+  <MainPageSendMessage />
+  <Marginer margin="100px" />
+</Layout>

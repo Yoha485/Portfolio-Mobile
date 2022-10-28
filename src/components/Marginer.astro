@@ -1,0 +1,14 @@
+---
+export interface Props {
+  margin: string;
+}
+
+const { margin } = Astro.props;
+---
+
+<div></div>
+<style define:vars={{ margin }}>
+  div {
+    margin-top: var(--margin);
+  }
+</style>

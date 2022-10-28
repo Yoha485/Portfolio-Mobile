@@ -1,0 +1,54 @@
+---
+import Marginer from './Marginer.astro';
+
+import type { Project } from '../constants/MainPage';
+
+type Props = Project;
+
+const { href, img, description, website, code } = Astro.props;
+---
+
+<div class="project">
+  <a href={href}>
+    <div class="preview">
+      <img src={img} alt="No Image Found" />
+    </div>
+  </a>
+  <Marginer margin="28px" />
+
+  <p class="description">{description}</p>
+  <Marginer margin="18px" />
+
+  <div class="project-links">
+    <a href={website}><p>Website</p></a>
+    <a href={code}><p>Code</p></a>
+  </div>
+</div>
+
+<style>
+  .preview {
+    aspect-ratio: 1 / 1;
+    border: 1px solid #404040;
+    padding: 15%;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .description {
+    text-align: center;
+    padding: 0 12%;
+  }
+
+  .project-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+  }
+</style>

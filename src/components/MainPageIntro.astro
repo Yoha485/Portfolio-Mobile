@@ -1,0 +1,57 @@
+---
+import MainPageSociall from './MainPageSociall.astro';
+import Marginer from './Marginer.astro';
+
+import { mainPageTitle, mainPageDescription } from '../constants/MainPage';
+---
+
+<section id="intro">
+  <Marginer margin="20px" />
+  <h1>{mainPageTitle}</h1>
+  <Marginer margin="25px" />
+  <div class="description">
+    <div>
+      <h2>{mainPageDescription}</h2>
+      <Marginer margin="70px" />
+      <MainPageSociall />
+    </div>
+  </div>
+</section>
+
+<style>
+  h1 {
+    text-fill-color: transparent;
+    background: linear-gradient(90.02deg, #06fdd8 1.06%, #0e9aff 102.58%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 95%;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 120%;
+
+    margin-top: 15px;
+  }
+
+  h1,
+  h2 {
+    white-space: initial;
+  }
+
+  .description {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 640px) {
+    h2 {
+      white-space: pre-line;
+    }
+  }
+</style>
