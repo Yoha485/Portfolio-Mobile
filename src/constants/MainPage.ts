@@ -48,19 +48,5 @@ export const projects: Array<Project> = [
     description: 'Dolore duis qui aliquip consectetur ipsum ullamco ad ea veniam.',
     website: 'https://alina-barannykova.netlify.app/',
     code: 'https://github.com/Yoha485/Designer-Portfolio'
-  },
-  {
-    href: '/projects/desigher_portfolio',
-    img: '/MainPage/projects/designer_portfolio.jpg',
-    description: 'Dolore duis qui aliquip consectetur ipsum ullamco ad ea veniam.',
-    website: 'https://alina-barannykova.netlify.app/',
-    code: 'https://github.com/Yoha485/Designer-Portfolio'
-  },
-  {
-    href: '/projects/desigher_portfolio',
-    img: '/MainPage/projects/designer_portfolio.jpg',
-    description: 'Dolore duis qui aliquip consectetur ipsum ullamco ad ea veniam.',
-    website: 'https://alina-barannykova.netlify.app/',
-    code: 'https://github.com/Yoha485/Designer-Portfolio'
   }
 ];
