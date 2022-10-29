@@ -22,7 +22,15 @@ import { projects } from '../constants/MainPage';
   section {
     display: flex;
     flex-direction: column;
-   
+
     row-gap: 35px;
+  }
+
+  @media (min-width: 640px) {
+    section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 25px;
+    }
   }
 </style>

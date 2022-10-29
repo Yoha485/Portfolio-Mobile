@@ -16,6 +16,19 @@ import { skills } from '../constants/MainPage';
       />
     ))
   }
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    });
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((element) => observer.observe(element));
+  </script>
 </section>
 
 <style>
@@ -23,5 +36,11 @@ import { skills } from '../constants/MainPage';
     display: flex;
     flex-direction: column;
     gap: 60px;
+  }
+
+  @media (min-width: 640px) {
+    section {
+      padding: 0 20%;
+    }
   }
 </style>
