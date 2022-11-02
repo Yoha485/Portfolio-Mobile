@@ -1,0 +1,39 @@
+---
+layout: ../../layouts/PostLayout.astro
+date: 'October 30th, 2022'
+tags: ['TypeScript']
+color: var(--frontend)
+---
+
+import Button from '../../components/Button.astro';
+import Marginer from '../../components/Marginer.astro';
+import CodeWrapper from '../../components/CodeWrapper.astro';
+import CodeWindow from '../../components/CodeWindow.astro';
+
+# Uncommon TypeScript Features
+
+For the last couple of months I've been working with TypeScript a lot. Many cool features came to my mind and now I see more ways to use them. Here I would like to share some interesting features of TypeScript that I find interesting but not really common. None of these features are super unique(some of them could be even found in docs)
+
+## Enumeration
+
+TypeScript allows you to create a union of types like so <CodeWrapper>type Coffee = Latte | Espresso | Americano</CodeWrapper>. And this even works with strings or numbers like <CodeWrapper>type Coffee = "latte" | "americano"</CodeWrapper> and <CodeWrapper>type CoffeeId = 1 | 2 | 3</CodeWrapper>
+
+However this gets worse if you need to specify a big range of numbers. In this case if you don't want to check your range conditionaly, you may find it usefull to create an **IntRange** type:
+
+<CodeWindow code={`type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N
+  ? Acc[number]
+  : Enumerate<N, [...Acc, Acc['length']]>\n
+type IntRange<F extends number, T extends number> 
+    = Exclude<Enumerate<T>, Enumerate<F>>
+
+const num: IntRange<20, 300> = 200 // It's Ok
+const num: IntRange<20, 300> = 1000 // This will give you an error
+`} lang="ts" theme="material-lighter" />
+
+<Marginer margin="50px" />
+
+## Partial, Required, and Pick
+
+Those three types are actually from <Button><a href='https://www.typescriptlang.org/docs/handbook/utility-types.html'>TypeScript Utility Types</a></Button>. But among many others I find them particularly usefull.
+
+The **Partial** is a type wrapper that makes all fields optional. This way you can make something like:

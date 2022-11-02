@@ -1,0 +1,50 @@
+---
+import Marginer from './Marginer.astro';
+import PostsPagePost from './PostsPagePost.astro';
+
+import { frontendCategory, backendCategory, devopsCategory, posts } from '../constants/PostsPage';
+---
+
+<section>
+  {
+    [frontendCategory].map((category) => (
+      <div>
+        <h1 style={{ color: category.color }}>{category.value}</h1>
+        <Marginer margin="25px" />
+        <div class="posts-grid">
+          {posts
+            .filter((post) => post.category === category)
+            .map((post) => (
+              <PostsPagePost
+                href={post.href}
+                title={post.title}
+                description={post.description}
+                tags={post.tags}
+                category={post.category}
+              />
+            ))}
+        </div>
+      </div>
+    ))
+  }
+</section>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+  }
+
+  .posts-grid {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  h1 {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
+  }
+</style>

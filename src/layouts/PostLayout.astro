@@ -1,0 +1,86 @@
+---
+import type { MDXLayoutProps } from 'astro';
+
+import Marginer from '../components/Marginer.astro';
+
+import Layout from './Layout.astro';
+
+type Props = MDXLayoutProps<{
+  date: string;
+  tags: Array<string>;
+  color: string;
+}>;
+
+const { frontmatter } = Astro.props;
+const color = frontmatter.color;
+---
+
+<Layout>
+  <Marginer margin="50px" />
+  <div class="post">
+    <slot />
+    <p class="date">Last Updated: {frontmatter.date}</p>
+
+    <div class="tags">
+      {frontmatter.tags.map((tag) => <div>{tag}</div>)}
+    </div>
+  </div>
+  <Marginer margin="150px" />
+</Layout>
+
+<style define:vars={{ color }}>
+  .post :global(h1) {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 120%;
+
+    margin-bottom: 20px;
+  }
+
+  .post :global(h2) {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 100%;
+
+    margin: 20px 0;
+  }
+
+  .post :global(p) {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+
+    margin-bottom: 20px;
+  }
+
+  .post :global(p):last-child {
+    margin-bottom: 10px;
+  }
+
+  .post :global(button) {
+    color: var(--color);
+    border-bottom: 1px solid var(--color);
+  }
+
+  .post .date {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    color: var(--gray);
+  }
+
+  .tags {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+
+    display: flex;
+    column-gap: 20px;
+
+    color: var(--color);
+  }
+
+  .post :global(strong) {
+    color: var(--color);
+  }
+</style>

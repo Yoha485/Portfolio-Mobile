@@ -1,0 +1,73 @@
+---
+import { Code } from 'astro/components';
+
+type Props = { code: string; lang?: 'ts' | 'js'; theme?: string };
+
+const { code, lang, theme } = Astro.props;
+---
+
+<div class="code-window">
+  <div class="window-header">
+    <div class="close"></div>
+    <div class="minimize"></div>
+    <div class="full-screen"></div>
+  </div>
+
+  <div class="code">
+    <Code code={code} lang={lang} theme={theme} />
+  </div>
+</div>
+
+<style>
+  .window-header {
+    height: 30px;
+    background-color: #f1f1f1;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding-left: 15px;
+  }
+
+  .close,
+  .minimize,
+  .full-screen {
+    aspect-ratio: 1 / 1;
+    max-width: 100%;
+    padding: 6px;
+    border-radius: 50%;
+  }
+
+  .close {
+    background-color: #fc5b57;
+  }
+
+  .minimize {
+    background-color: #e5bf3c;
+  }
+
+  .full-screen {
+    background-color: #57c038;
+  }
+
+  .code :global(pre) {
+    padding: 15px;
+    background-color: var(--white) !important;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .code :global(::-webkit-scrollbar-thumb) {
+    background-color: #b8b4b4;
+    border: 6px solid transparent;
+    border-radius: 8px;
+    background-clip: padding-box;
+  }
+
+  .code :global(::-webkit-scrollbar) {
+    width: 16px;
+  }
+</style>
