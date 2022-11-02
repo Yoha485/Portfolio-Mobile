@@ -3,6 +3,11 @@ html {
 
   --black: #111111;
   --white: #ffffff;
+  --gray: #404040;
+
+  --frontend: #06fcd8;
+  --backend: #0ad0ea;
+  --devops: #0da1fc;
 }
 
 body {

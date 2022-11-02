@@ -2,11 +2,15 @@
 const items = [
   {
     name: 'Main',
-    href: '/#intro'
+    href: '/'
   },
   {
     name: 'Projects',
     href: '/#projects'
+  },
+  {
+    name: 'Posts',
+    href: '/posts'
   },
   {
     name: 'Contacts',
@@ -16,28 +20,111 @@ const items = [
 ---
 
 <header id="header">
+  <button class="menu"><div>Menu</div></button>
+
   <nav>
-    {items.map((item) => <a href={item.href}>{item.name}</a>)}
+    <ul>
+      {
+        items.map((item) => (
+          <li>
+            <a href={item.href}>{item.name}</a>
+          </li>
+        ))
+      }
+    </ul>
   </nav>
+
+  <script>
+    const burger = document.querySelectorAll('.menu')[0];
+    const handleNav = () => {
+      const nav = document.querySelectorAll('nav')[0];
+      if (nav.style.display === 'block') {
+        nav.style.display = 'none';
+      } else {
+        nav.style.display = 'block';
+      }
+    };
+
+    burger.addEventListener('click', () => {
+      handleNav();
+    });
+
+    const lis = document.querySelectorAll('li');
+    lis.forEach((li) => {
+      li.addEventListener('click', () => {
+        setTimeout(handleNav, 500);
+      });
+    });
+  </script>
 </header>
 
 <style>
+  header {
+    margin-top: 30px;
+  }
+
   nav {
-    height: 120px;
+    display: none;
+  }
+
+  .menu {
+    height: 28px;
+    width: 60px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    text-align: center;
+    outline: none;
+    color: transparent;
+  }
+
+  .menu div,
+  .menu:after,
+  .menu:before {
+    content: '';
+    position: absolute;
+    height: 4px;
+    background-color: var(--white);
+    transition: all 0.3s ease;
+    border-radius: 4px;
+  }
+
+  .menu:after {
+    bottom: 0;
+    width: 30px;
+  }
+
+  .menu div {
+    width: 15px;
+  }
+
+  .menu:before {
+    top: 0;
+    width: 30px;
+  }
+
+  ul {
+    padding: 30px 0 20px 0;
 
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    column-gap: 60px;
+    flex-direction: column;
 
-    font-weight: 500;
-    font-size: 22px;
+    font-weight: 400;
+    font-size: 16px;
     line-height: 27px;
   }
 
-  @media (min-width: 640px) {
-    nav {
-      justify-content: flex-end;
-    }
+  li {
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  li:not(:last-child) {
+    border-bottom: 1px solid var(--gray);
   }
 </style>
