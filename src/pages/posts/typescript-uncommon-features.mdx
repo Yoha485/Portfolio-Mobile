@@ -28,12 +28,63 @@ type IntRange<F extends number, T extends number>
 
 const num: IntRange<20, 300> = 200 // It's Ok
 const num: IntRange<20, 300> = 1000 // This will give you an error
-`} lang="ts" theme="material-lighter" />
+`} lang="ts" />
 
 <Marginer margin="50px" />
 
-## Partial, Required, and Pick
+## Required and Partial
 
 Those three types are actually from <Button><a href='https://www.typescriptlang.org/docs/handbook/utility-types.html'>TypeScript Utility Types</a></Button>. But among many others I find them particularly usefull.
 
-The **Partial** is a type wrapper that makes all fields optional. This way you can make something like:
+The **Required** is a type wrapper that makes all fields... well... required. This way you can make something like:
+
+<CodeWindow code={`type Coffee = { // Say, you found this type in readonly library
+  coffeeBeans: Beans,
+  steamedMilk?: true,
+  hotChocolate?: true,
+};
+
+//////////////////////////////
+
+type Mocha = Required<Coffee>;
+//const mocha: Mocha = {  // Error, hotChocolate is not specified
+//  coffeeBeans: Beans.Columbia,
+//  steamedMilk: true,
+//};
+
+const mocha: Mocha = { // It's Ok  
+  coffeeBeans: Beans.Columbia,
+  steamedMilk: true,
+  hotChocolate: true,
+};
+`} lang="ts" />
+<Marginer margin="50px" />
+
+**Partial** does exactly the oposite making all your fields optional. That's especially usefull when you are going to update some entity and you don't want to provide all the types of existing one:
+
+<CodeWindow code={`type Entity = {
+  name: string,
+  description: string
+}
+
+///////////////
+
+function updateEntity(id: string, newEntity: Partial<Entity>) {
+  db.findEntity(id).update(newEntity);
+}
+
+///////////////
+
+updateEntity(id, {description: {'New Description'})
+`} lang='ts' />
+<Marginer margin="50px" />
+
+## Type of array elements
+
+One time you may want to retrieve type of an array element. You can do this with the next type:
+
+<CodeWindow code={`type ArrayElement<ArrayType extends readonly unknown[]> = 
+  ArrayType extends readonly (infer ElementType)[] ? ElementType : never;
+`} lang='ts' />
+<Marginer margin="50px" />
+ Check out <Button><a href='https://stackoverflow.com/questions/41253310/typescript-retrieve-element-type-information-from-array-type'>this</a></Button> thread for more 

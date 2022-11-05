@@ -2,9 +2,12 @@
 import MainPageProject from './MainPageProject.astro';
 
 import { projects } from '../constants/MainPage';
+import MainPageSectionTitle from './MainPageSectionTitle.astro';
 ---
 
 <section id="projects">
+  <MainPageSectionTitle>Projects</MainPageSectionTitle>
+
   {
     projects.map((project) => (
       <MainPageProject
