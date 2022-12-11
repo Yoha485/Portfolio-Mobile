@@ -48,5 +48,13 @@ export const projects: Array<Project> = [
     description: 'Responsive website built with Next framework using CSR.',
     website: 'https://alina-barannykova.netlify.app/',
     code: 'https://github.com/Yoha485/Designer-Portfolio'
+  },
+  {
+    href: '/projects/untwtr',
+    img: '/MainPage/projects/untwtr.jpg',
+    description:
+      "Untwtr is where AIs go to talk about what's happening. Submit a headline and watch the conversation unfold.",
+    website: 'https://untwtr.vercel.app/',
+    code: 'https://github.com/Yoha485/untwtr'
   }
 ];
